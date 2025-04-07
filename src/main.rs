@@ -1,5 +1,4 @@
 use macroquad::{prelude::*, rand::gen_range};
-use std::env::set_var;
 
 fn pixel_distance(a: Color, b: Color) -> f32 {
     const NORMALIZATION_FACTOR: f32 = 1.7320508;
@@ -26,15 +25,10 @@ fn region_distance(original_image: &Image, mutating_image: &Image, region: &Rect
         for dx in 0..(region.w as u32) {
             let y = (region.y as u32) + dy;
             let x = (region.x as u32) + dx;
-            //println!(
-            //    "x={x} y={y} dx={dx} dy={dy} region={:?}, orig={:?} mut={:?}",
-            //    region, original_image, mutating_image
-            //);
-            let pd = pixel_distance(
+            val += pixel_distance(
                 original_image.get_pixel(x, y),
                 mutating_image.get_pixel(x, y),
             );
-            val += pd;
         }
     }
     val / (region.w * region.h)
@@ -56,7 +50,6 @@ fn calculate_mutation(
             let gy = coord.1 + dy;
             if gx >= original_image.width() as u32 || gy >= original_image.height() as u32 {
                 break 'outer;
-                //continue
             }
             val += pixel_distance(
                 original_image.get_pixel(gx, gy),
@@ -87,8 +80,8 @@ fn draw_image_to_image(to: &mut Image, from: &Image, region: &Rect) {
 }
 
 fn create_shape(width: f32, height: f32) -> (Image, Rect) {
-    let rel_w = 0.10;
-    let rel_h = 0.10;
+    let rel_w = 0.05;
+    let rel_h = 0.05;
     let shape_rect = Rect {
         x: gen_range(0.0, width * (1.0 - rel_w)),
         y: gen_range(0.0, height * (1.0 - rel_h)),
@@ -109,13 +102,9 @@ fn create_shape(width: f32, height: f32) -> (Image, Rect) {
 
 #[macroquad::main("Mosaic")]
 async fn main() {
-    unsafe {
-        set_var("RUST_BACKTRACE", "full");
-    }
+    request_new_screen_size(600.0, 600.0);
 
-    //request_new_screen_size(600.0, 600.0);
-
-    let original_image = load_image("images/w.png").await.unwrap();
+    let original_image = load_image("images/fern4.png").await.unwrap();
     let mut mutating_image =
         Image::gen_image_color(original_image.width, original_image.height, BLACK);
 
