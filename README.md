@@ -1,6 +1,8 @@
-Generates a random mosaic to approximate an image.
+Generates a random mosaic to approximate an image. The longer it runs, the more similar the mosaic will be to the original image.
 
 Examples: 
+
+![image](https://github.com/user-attachments/assets/a0074bca-7948-4e61-99cb-3c68358aa30f)
 
 ![image](https://github.com/user-attachments/assets/32ba62fc-93f7-4838-ad6b-973aa2e9b415)
 
