@@ -1,4 +1,4 @@
-Generates a random mosaic to approximate an image. The longer it runs, the more similar the mosaic will be to the original image.
+Generates a random mosaic to approximate an image. More iterations result in a mosaic that fits the image better. You can also choose the sizes of the rectangles used to approximate images, will probably add other shapes as well.
 
 Examples: 
 
