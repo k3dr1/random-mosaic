@@ -1,6 +1,8 @@
-Generates a random mosaic to approximate an image.
+Generates a random mosaic to approximate an image. More iterations result in a mosaic that fits the image better. You can also choose the sizes of the rectangles used to approximate images, will probably add other shapes as well.
 
 Examples: 
+
+![image](https://github.com/user-attachments/assets/a0074bca-7948-4e61-99cb-3c68358aa30f)
 
 ![image](https://github.com/user-attachments/assets/32ba62fc-93f7-4838-ad6b-973aa2e9b415)
 
