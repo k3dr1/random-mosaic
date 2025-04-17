@@ -1,6 +1,7 @@
 use macroquad::{prelude::*, rand::gen_range};
 
 fn pixel_distance(a: Color, b: Color) -> f32 {
+    // sqrt(3) since these are vectors in R^3
     const NORMALIZATION_FACTOR: f32 = 1.7320508;
     ((a.r - b.r).powi(2) + (a.g - b.g).powi(2) + (a.b - b.b).powi(2)).sqrt() / NORMALIZATION_FACTOR
 }
@@ -80,8 +81,8 @@ fn draw_image_to_image(to: &mut Image, from: &Image, region: &Rect) {
 }
 
 fn create_shape(width: f32, height: f32) -> (Image, Rect) {
-    let rel_w = 0.05;
-    let rel_h = 0.05;
+    let rel_w = 0.20;
+    let rel_h = 0.20;
     let shape_rect = Rect {
         x: gen_range(0.0, width * (1.0 - rel_w)),
         y: gen_range(0.0, height * (1.0 - rel_h)),
